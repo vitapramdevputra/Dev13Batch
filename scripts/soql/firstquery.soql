@@ -1,0 +1,11 @@
+SELECT id, name, Phone from Account
+
+select id, name, project_name__c from Salesforce_Project__c
+
+select id, name, mailingcity from contact where name like '%vi%'
+
+SELECT Id, Name, Type, Industry FROM Account where industry = 'energy' LIMIT 1
+
+select id, name, phone, accountnumber from account where phone != null and accountnumber != null
+
+select id, name, project_name__c, status__c from Salesforce_Project__c where status__c != 'new'
