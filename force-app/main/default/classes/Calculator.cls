@@ -1,10 +1,11 @@
 public class Calculator {
 
+   //parameterless method.
    public void welcomeMessage(){
         system.debug('welcome to apex calc');
         printNewMessage('welcome welcome');
    }
-
+   //parameterized method.
    public void printNewMessage(string msg){
         system.debug(msg);
    }
