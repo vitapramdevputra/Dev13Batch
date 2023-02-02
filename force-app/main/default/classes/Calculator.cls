@@ -6,6 +6,8 @@ public class Calculator {
         printNewMessage('welcome welcome');
    }
    //parameterized method.
+   //parameter: string 
+   // it accepts a string, and prints it. That's it
    public void printNewMessage(string msg){
         system.debug(msg);
    }
