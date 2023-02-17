@@ -1,13 +1,47 @@
 trigger AccountTrigger on Account (before insert, before update, after insert, after update) {
     system.debug('--- trigger start ----');
-    Map<id, account> trgNewMap = trigger.newMap;
-    Map<id, account> trgOldMap = trigger.oldMap;
-
-
-    if (Trigger.isAfter && Trigger.isUpdate ) {
-        system.debug('==AFTER UPDATE==');
-       
+    if (Trigger.isBefore) {
+        AccountTriggerHandler.updateDescription(Trigger.New, Trigger.Old, Trigger.NewMap, Trigger.OldMap);
     }
+    
+    // Map<id, account> trgNewMap = trigger.newMap;//key = ID, value = record.
+    // Map<id, account> trgOldMap = trigger.oldMap;
+
+
+    // if (Trigger.isBefore && Trigger.isUpdate) {
+    //     //set<id> accIds = trgNewMap.keySet();
+    //     for (Id eachId : trgNewMap.keySet()) {
+    //         //get new account using map.get(key) from trigger.newMap
+    //         account newAcc = trgNewMap.get(eachId);//latest updated values.
+    //         //get OLD account using map.get(key) from trigger.oldMap
+    //         account oldAcc = trgOldMap.get(eachId);//previous values.
+
+    //         //get website field of new and old account
+    //         string newWebsite = newAcc.Website;
+    //         system.debug('newWebsite is ===> ' + newWebsite);
+    //         string oldWebsite = oldAcc.Website;
+    //         system.debug('oldWebsite is ===> ' + oldWebsite);
+    //         //check if website field is changed.
+    //         if (newWebsite != oldWebsite) {
+    //             system.debug('For account ' + newAcc.Name + ', new WEBSITE is ' + newWebsite);
+    //         }
+    //     }
+    // }
+
+    // if (Trigger.isAfter && Trigger.isUpdate ) {
+    //     system.debug('==AFTER UPDATE==');
+    //     set<id> accIds = trgNewMap.keySet();
+    //     set<id> accIdsOld = trgOldMap.keySet();
+
+    //     for (Id eachID : accIds) {
+    //         system.debug('--for each START--');
+    //         system.debug('each Id is ' + eachID);
+    //         account newAcc = trgNewMap.get(eachId);
+    //         account oldAcc = trgOldMap.get(eachId);
+    //         system.debug('new acc name is ' + newAcc.Name + ', its old name WAS ' + oldAcc.Name);
+    //         system.debug('--for each END--');
+    //     }
+    // }
 
     // if (Trigger.isBefore && Trigger.isInsert ) {
     //     system.debug('==BEFORE INSERT==');
