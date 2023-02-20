@@ -3,6 +3,28 @@ trigger AccountTrigger on Account (before insert, before update, after insert, a
     if (Trigger.isBefore) {
         AccountTriggerHandler.updateDescription(Trigger.New, Trigger.Old, Trigger.NewMap, Trigger.OldMap);
     }
+    if (Trigger.isAfter && Trigger.isUpdate) {
+        //call VIP update method.
+        AccountTriggerHandler.updateVIPForAllContact(Trigger.New, Trigger.Old, Trigger.NewMap, Trigger.OldMap);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     // Map<id, account> trgNewMap = trigger.newMap;//key = ID, value = record.
     // Map<id, account> trgOldMap = trigger.oldMap;
