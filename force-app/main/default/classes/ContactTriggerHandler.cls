@@ -62,19 +62,21 @@ public class ContactTriggerHandler {
         }
         system.debug('account ids ' + accIds);
 
-        List<account> listAccount = [select id, number_of_contacts__c, (select id from contacts) from account 
-                                    where id in :accIds];
-        for(account eachAcc: listAccount){
+        if (!accIds.isEmpty()) {
+            List<account> listAccount = [select id, number_of_contacts__c, (select id from contacts) from account 
+                                        where id in :accIds];
+            for(account eachAcc: listAccount){
 
-            integer numOfContacts = 0;
-            if(eachAcc.Contacts != null){
-                numOfContacts = eachAcc.Contacts.size();
+                integer numOfContacts = 0;
+                if(eachAcc.Contacts != null){
+                    numOfContacts = eachAcc.Contacts.size();
+                }
+                //set number of contact's field value to SIZE
+                eachAcc.number_of_contacts__c = numOfContacts;
             }
-            //set number of contact's field value to SIZE
-            eachAcc.number_of_contacts__c = numOfContacts;
-        }
-        if(!listAccount.isEmpty()){
-            update listAccount;
+            if(!listAccount.isEmpty()){
+                update listAccount;
+            }
         }
     }
 }
