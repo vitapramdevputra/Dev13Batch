@@ -42,4 +42,15 @@ public class SPTriggerHandler {
         }
         
    }
+
+   @future
+   public static void updateProjectDescription(set<id> spIds) {
+    if (!spIds.isEmpty()) {
+        List<Salesforce_Project__c> listSP = [select id, description__c from Salesforce_Project__c where id in :spIds];
+        for (Salesforce_Project__c eachSP : listSP) {
+            eachSP.Description__c = 'Updated  desc from future method';
+        }
+        update listSP;
+    }
+   }
 }

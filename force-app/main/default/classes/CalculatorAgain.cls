@@ -11,6 +11,7 @@ public class CalculatorAgain {
         system.debug(msg);
     }
 
+    @testVisible
     void privatePrintMessage(string msg){
         system.debug('inside private method NOOWW');
         system.debug(msg);
