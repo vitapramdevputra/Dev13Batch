@@ -1,4 +1,5 @@
-public class AccountsBatch implements Database.Batchable<SObject>{
+public class AccountsBatch13 implements Database.Batchable<SObject>, database.stateful{
+    integer recordCount = 0;
     //start method -> SOQL QUERY -> ACCOUNT -> 50k
     public Database.QueryLocator start(Database.BatchableContext bc){
         system.debug('inside start method.');
@@ -8,6 +9,7 @@ public class AccountsBatch implements Database.Batchable<SObject>{
 
     public void execute(Database.BatchableContext bc, list<account> scope){
         system.debug('inside execute method');
+        system.debug('check recordCount FIRST: ' + recordCount);
         //update account records
         list<account> updateAccount = new list<account>();
         for (account eachAcc : scope) {
@@ -18,10 +20,15 @@ public class AccountsBatch implements Database.Batchable<SObject>{
         }
         if (!updateAccount.isempty()) {
             update updateAccount;
+            recordCount += updateAccount.size();
+            system.debug('check recordCount SECOND: ' + recordCount);
         }
+
     }
     //finish method
     public void finish(Database.BatchableContext bc){
         system.debug('finished with all records.');
+        system.debug('check recordCount FINAL: ' + recordCount);
+        //send email to admins on how many records are processed successfully.
     }
 }
