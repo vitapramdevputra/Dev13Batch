@@ -1,4 +1,4 @@
-public class AccountTriggerHandler {
+public without sharing class AccountTriggerHandler {
     //a method which updates description if active is yes
     public static void updateDescription(List<Account> accTriggerNew,
                                         List<account> accTriggerOld,

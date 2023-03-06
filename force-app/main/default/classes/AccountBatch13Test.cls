@@ -1,5 +1,5 @@
 @isTEst
-public class AccountBatch13Test {
+public with sharing class AccountBatch13Test {
     @isTest
     public static void testBatch1() {
         //1. Data preparation.
