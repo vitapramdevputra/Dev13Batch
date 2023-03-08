@@ -23,11 +23,12 @@ public class ContactTriggerHandler {
     List<contact> conTriggerOld,
     Map<id, contact> conTriggerNewMap,
     Map<id, contact> conTriggerOldMap) {
+        string validationError = system.label.contactValidation2;
         
         for (contact eachContact : conTriggerNew) {
             //check if LeadSource is changed.
             if (eachContact.leadsource !=  conTriggerOldMap.get(eachContact.Id).LeadSource ) {
-                eachContact.LeadSource.addError('CANNOT CHANGE LEAD SOURCE. PLEASE USER!!!!!!');
+                eachContact.LeadSource.addError(validationError);
             }
         }
 

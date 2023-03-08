@@ -14,8 +14,9 @@ public class SPTriggerHandler {
                 insert newTickets;
             }
         } catch (Exception ex) {
+            string errorMsg = system.label.CreateDefaultTicketError;
             for (Salesforce_Project__c eachSP : spTriggerNew) {
-                eachSP.addError('ERROR in creating default ticket. Please contact your administrator, not developer');
+                eachSP.addError(errorMsg);
             }
         }
    }
