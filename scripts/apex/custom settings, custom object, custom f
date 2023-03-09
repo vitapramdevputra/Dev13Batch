@@ -1,0 +1,9 @@
+custom settings, custom object, custom fields -- we can move from sandbox to production
+we will retrive(download from org to sfdx project)
+    custom objects, custom fields, custom settings
+    
+we CANNOt move DATA of custom objects or custom settings from sandbox to production
+
+
+Custom metadata types -> we can move MDT from one org to another.
+Also, we CAN move DATA of MDT from one org to another.
