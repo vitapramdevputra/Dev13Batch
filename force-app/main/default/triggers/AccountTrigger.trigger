@@ -1,4 +1,9 @@
 trigger AccountTrigger on Account (before insert, before update, after insert, after update) {
+    //if account trigger is disabled, then return.
+    TriggerSwitch__c ts = TriggerSwitch__c.getInstance('account');
+    if(!ts.enabled__c){
+        return;
+    }
     system.debug('--- trigger start ----');
     if (Trigger.isBefore) {
         AccountTriggerHandler.updateDescription(Trigger.New, Trigger.Old, Trigger.NewMap, Trigger.OldMap);
